@@ -4,7 +4,7 @@ import { Search } from "lucide-react"
 
 import { Header } from "@/components/layout/Header"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { ActionButton } from "@/components/ui/action-button"
 import { AGENCIES_BOUTIQUES } from "@/lib/data"
 
 export default function BoutiquesPage() {
@@ -36,7 +36,7 @@ export default function BoutiquesPage() {
                             </div>
                             <h3 className="font-semibold text-sm">{boutique.name}</h3>
                             <p className="text-xs text-muted-foreground">{boutique.location}</p>
-                            <Button variant="outline" size="sm" className="w-full mt-2 h-7 text-xs rounded-full">Follow</Button>
+                            <ActionButton variant="outline" size="sm" className="w-full mt-2 h-7 text-xs rounded-full" actionLabel="Following" successMessage={`You are now following ${boutique.name}`}>Follow</ActionButton>
                         </Link>
                     ))}
                     {/* Add duplicates for grid demo since we have limited mock data */}
@@ -47,7 +47,7 @@ export default function BoutiquesPage() {
                             </div>
                             <h3 className="font-semibold text-sm">{boutique.name}</h3>
                             <p className="text-xs text-muted-foreground">{boutique.location}</p>
-                            <Button variant="outline" size="sm" className="w-full mt-2 h-7 text-xs rounded-full">Follow</Button>
+                            <ActionButton variant="outline" size="sm" className="w-full mt-2 h-7 text-xs rounded-full" actionLabel="Following" successMessage={`You are now following ${boutique.name}`}>Follow</ActionButton>
                         </Link>
                     ))}
                 </div>

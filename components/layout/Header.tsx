@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { MoreHorizontal, Search } from "lucide-react"
+import { MoreHorizontal, Search, MessageSquare } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function Header() {
@@ -11,12 +11,14 @@ export function Header() {
                     <span className="font-bold text-sm tracking-wide">MODE</span>
                 </Link>
 
-                <div className="flex items-center space-x-2">
-                    <Button variant="ghost" size="icon" className="h-8 w-8">
-                        <Search className="h-5 w-5" />
-                        <span className="sr-only">Search</span>
+                <div className="flex items-center space-x-1">
+                    <Button variant="ghost" size="icon" className="h-9 w-9" asChild>
+                        <Link href="/inbox">
+                            <MessageSquare className="h-5 w-5" />
+                            <span className="sr-only">Inbox</span>
+                        </Link>
                     </Button>
-                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                    <Button variant="ghost" size="icon" className="h-9 w-9">
                         <MoreHorizontal className="h-5 w-5" />
                         <span className="sr-only">Menu</span>
                     </Button>

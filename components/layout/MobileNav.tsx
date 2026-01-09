@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Compass, Briefcase, ShoppingBag, MessageSquare, Search } from "lucide-react"
+import { Compass, Briefcase, ShoppingBag, MessageSquare, Search, User } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const navItems = [
@@ -27,9 +27,9 @@ const navItems = [
         icon: ShoppingBag,
     },
     {
-        name: "Inbox",
-        href: "/inbox",
-        icon: MessageSquare,
+        name: "Profile",
+        href: "/profile",
+        icon: User,
     },
 ]
 

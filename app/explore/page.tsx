@@ -8,9 +8,12 @@ import { FEATURED_MODELS, PHOTOGRAPHERS, AGENCIES_BOUTIQUES } from "@/lib/data"
 export default function ExplorePage() {
     // Combine all images for a "feed" feel
     const allContent = [
-        ...FEATURED_MODELS.map(m => ({ ...m, type: "Model" })),
-        ...PHOTOGRAPHERS.map(p => ({ ...p, type: "Photographer" })),
-        ...AGENCIES_BOUTIQUES.slice(0, 2).map(a => ({ ...a, type: "Creative" }))
+        ...FEATURED_MODELS.map(m => ({ ...m, type: "Model", media: "image" })),
+        ...PHOTOGRAPHERS.map(p => ({ ...p, type: "Photographer", media: "image" })),
+        ...AGENCIES_BOUTIQUES.slice(0, 2).map(a => ({ ...a, type: "Creative", media: "image" })),
+        // Add sample video items
+        { id: "v1", image: "https://assets.mixkit.co/videos/preview/mixkit-fashion-model-posing-in-neon-light-32975-large.mp4", type: "Runway", media: "video" },
+        { id: "v2", image: "https://assets.mixkit.co/videos/preview/mixkit-woman-turning-in-slow-motion-putting-on-a-jacket-42617-large.mp4", type: "Campaign", media: "video" },
     ].sort(() => Math.random() - 0.5)
 
     return (
@@ -30,15 +33,25 @@ export default function ExplorePage() {
                 {/* Masonry Grid (Simulated with columns) */}
                 <div className="columns-2 md:columns-3 gap-2 space-y-2">
                     {allContent.map((item, i) => (
-                        <div key={`${item.id}-${i}`} className="break-inside-avoid mb-2 relative group overflow-hidden rounded-md">
+                        <div key={`${item.id}-${i}`} className="break-inside-avoid mb-2 relative group overflow-hidden rounded-md bg-zinc-100">
                             {/* Randomize aspect ratio for masonry feel */}
                             <div className={`relative w-full ${i % 3 === 0 ? "aspect-[3/4]" : "aspect-square"}`}>
-                                <Image
-                                    src={item.image}
-                                    alt="Explore"
-                                    fill
-                                    className="object-cover"
-                                />
+                                {item.media === "video" ? (
+                                    <video
+                                        src={item.image}
+                                        autoPlay
+                                        muted
+                                        loop
+                                        className="absolute inset-0 h-full w-full object-cover"
+                                    />
+                                ) : (
+                                    <Image
+                                        src={item.image}
+                                        alt="Explore"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                )}
                                 {/* Overlay */}
                                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 pointer-events-none">
                                     <Badge variant="secondary" className="text-[10px] h-5 px-1.5 opacity-90">{item.type}</Badge>
@@ -48,14 +61,24 @@ export default function ExplorePage() {
                     ))}
                     {/* Duplicate for demo volume */}
                     {allContent.map((item, i) => (
-                        <div key={`${item.id}-dup-${i}`} className="break-inside-avoid mb-2 relative group overflow-hidden rounded-md">
+                        <div key={`${item.id}-dup-${i}`} className="break-inside-avoid mb-2 relative group overflow-hidden rounded-md bg-zinc-100">
                             <div className={`relative w-full ${i % 2 === 0 ? "aspect-[4/3]" : "aspect-[3/5]"}`}>
-                                <Image
-                                    src={item.image}
-                                    alt="Explore"
-                                    fill
-                                    className="object-cover"
-                                />
+                                {item.media === "video" ? (
+                                    <video
+                                        src={item.image}
+                                        autoPlay
+                                        muted
+                                        loop
+                                        className="absolute inset-0 h-full w-full object-cover"
+                                    />
+                                ) : (
+                                    <Image
+                                        src={item.image}
+                                        alt="Explore"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                )}
                             </div>
                         </div>
                     ))}

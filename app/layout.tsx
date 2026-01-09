@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Toaster } from "sonner";
 import { MobileNav } from "@/components/layout/MobileNav";
 import "./globals.css";
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         <div className="bg-background min-h-screen pb-20">
           {children}
           <MobileNav />
+          <Toaster position="top-center" />
         </div>
       </body>
     </html>

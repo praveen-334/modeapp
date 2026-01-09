@@ -4,6 +4,7 @@ import { MapPin, Calendar, DollarSign, Filter } from "lucide-react"
 import { Header } from "@/components/layout/Header"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { ActionButton } from "@/components/ui/action-button"
 import { JOBS } from "@/lib/data"
 
 export default function JobsPage() {
@@ -64,11 +65,13 @@ export default function JobsPage() {
                             </div>
 
                             {/* Footer Tags */}
-                            <div className="bg-zinc-50 px-4 py-2 flex gap-2 border-t">
+                            <div className="bg-zinc-50 px-4 py-2 flex gap-2 border-t items-center">
                                 {job.tags.map(tag => (
                                     <span key={tag} className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground">{tag}</span>
                                 ))}
-                                <span className="ml-auto text-[10px] text-blue-600 font-medium cursor-pointer">Apply Now</span>
+                                <div className="ml-auto">
+                                    <ActionButton variant="ghost" className="h-auto p-0 text-[10px] text-blue-600 font-medium hover:text-blue-700 hover:bg-transparent" actionLabel="Applying" successMessage="Application sent successfully!">Apply Now</ActionButton>
+                                </div>
                             </div>
                         </div>
                     ))}
