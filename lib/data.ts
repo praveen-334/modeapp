@@ -1,10 +1,11 @@
-export type Category = "Models" | "Agencies" | "Boutiques" | "Photographers" | "All"
+export type Category = "Models" | "Agencies" | "Boutiques" | "Photographers" | "Creatives" | "All"
 
 export const CATEGORIES = [
     { name: "Models", description: "Runway, print, commercial" },
     { name: "Agencies", description: "Global & boutique" },
-    { name: "Boutiques", description: "Luxury & concept" },
     { name: "Photographers", description: "Editorial & campaign" },
+    { name: "Creatives", description: "MUAs, Stylists, Retouchers" },
+    { name: "Boutiques", description: "Luxury & concept" },
 ]
 
 export const FEATURED_MODELS = [
@@ -16,6 +17,18 @@ export const FEATURED_MODELS = [
         tags: ["Runway", "Editorial"],
         image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop",
         verified: true,
+        stats: {
+            height: "180cm / 5'11\"",
+            bust: "81cm / 32\"",
+            waist: "61cm / 24\"",
+            hips: "89cm / 35\"",
+            shoe: "40 EU / 9 US",
+            hair: "Dark Brown",
+            eyes: "Green",
+        },
+        experience: "Professional",
+        compensation: "Paid Work Only",
+        travelNotice: "Paris (Sep 20-25)",
     },
     {
         id: "m2",
@@ -25,6 +38,16 @@ export const FEATURED_MODELS = [
         tags: ["Commercial", "Fitness"],
         image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1887&auto=format&fit=crop",
         verified: false,
+        stats: {
+            height: "188cm / 6'2\"",
+            chest: "96cm / 38\"",
+            waist: "76cm / 30\"",
+            shoe: "44 EU / 10.5 US",
+            hair: "Black",
+            eyes: "Dark Brown",
+        },
+        experience: "Experienced",
+        compensation: "Paid & Select TFP",
     },
     {
         id: "m3",
@@ -34,7 +57,48 @@ export const FEATURED_MODELS = [
         tags: ["New Face", "Print"],
         image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1964&auto=format&fit=crop",
         verified: false,
+        stats: {
+            height: "175cm / 5'9\"",
+            bust: "84cm / 33\"",
+            waist: "63cm / 25\"",
+            hips: "91cm / 36\"",
+            shoe: "39 EU / 8.5 US",
+            hair: "Blonde",
+            eyes: "Blue",
+        },
+        experience: "New Face",
+        compensation: "TFP / Portfolio Building",
     },
+]
+
+export const CREATIVES = [
+    {
+        id: "c1",
+        name: "Sophie Clark",
+        type: "Makeup Artist",
+        location: "London",
+        image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=2071&auto=format&fit=crop",
+        tags: ["Editorial", "Bridal"],
+        rate: "£350/day",
+    },
+    {
+        id: "c2",
+        name: "James Miller",
+        type: "Stylist",
+        location: "New York",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop",
+        tags: ["Celebrity", "High Fashion"],
+        rate: "$800/day",
+    },
+    {
+        id: "c3",
+        name: "Anna V",
+        type: "Retoucher",
+        location: "Remote",
+        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop",
+        tags: ["Beauty", "Commercial"],
+        rate: "$50/image",
+    }
 ]
 
 export const AGENCIES_BOUTIQUES = [
@@ -68,6 +132,11 @@ export const PHOTOGRAPHERS = [
         specialty: "Fashion Photographer",
         location: "Milan, IT",
         image: "https://images.unsplash.com/photo-1554048612-387768052bf7?q=80&w=2035&auto=format&fit=crop",
+        stats: {
+            camera: "Canon R5",
+            lenses: "50mm f/1.2, 85mm f/1.4",
+            studio: "Yes (Milan Center)"
+        }
     },
     {
         id: "ph2",
@@ -75,6 +144,11 @@ export const PHOTOGRAPHERS = [
         specialty: "Street Style",
         location: "New York, US",
         image: "https://images.unsplash.com/photo-1520155707818-8638c9e050c7?q=80&w=1978&auto=format&fit=crop",
+        stats: {
+            camera: "Sony A7IV",
+            lenses: "35mm f/1.4",
+            studio: "No (On location only)"
+        }
     },
 ]
 

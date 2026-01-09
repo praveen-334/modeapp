@@ -55,6 +55,20 @@ export default function EditProfilePage() {
                     <label className="text-xs text-muted-foreground">Bio</label>
                     <textarea defaultValue="Model @ Elite Milan | Traveller ✈️ | Coffee Lover ☕️" className="flex min-h-[60px] w-full border-b border-zinc-200 bg-transparent text-sm focus:outline-none focus:border-black transition-colors resize-none py-1" />
                 </div>
+
+                <div className="space-y-1">
+                    <label className="text-xs text-muted-foreground">My Role</label>
+                    <div className="relative">
+                        <select className="flex h-8 w-full border-b border-zinc-200 bg-transparent text-sm focus:outline-none focus:border-black transition-colors appearance-none">
+                            <option>Model</option>
+                            <option>Photographer</option>
+                            <option>Agency</option>
+                            <option>Boutique</option>
+                        </select>
+                        <ChevronLeft className="h-4 w-4 absolute right-1 top-2 -rotate-90 text-muted-foreground pointer-events-none" />
+                    </div>
+                </div>
+
                 <div className="pt-4 border-t">
                     <div className="py-3 flex justify-between items-center cursor-pointer">
                         <span className="text-sm">Personal Information Settings</span>

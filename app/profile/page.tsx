@@ -5,6 +5,7 @@ import { Settings, Grid, Bookmark, UserSquare2 } from "lucide-react"
 import { Header } from "@/components/layout/Header"
 import { Button } from "@/components/ui/button"
 import { FEATURED_MODELS } from "@/lib/data"
+import { StatsBlock } from "@/components/ui/stats-block"
 
 export default function ProfilePage() {
     // Mock current user data
@@ -66,6 +67,20 @@ export default function ProfilePage() {
                     <div className="font-semibold text-sm">{user.name}</div>
                     <div className="text-sm whitespace-pre-wrap">{user.bio}</div>
                 </div>
+
+                {/* User Stats/Details Block (Mock) */}
+                <StatsBlock
+                    stats={{
+                        height: "180cm / 5'11\"",
+                        bust: "81cm / 32\"",
+                        waist: "61cm / 24\"",
+                        hips: "89cm / 35\"",
+                        shoe: "40 EU / 9 US",
+                        hair: "Dark Brown",
+                        eyes: "Green",
+                    }}
+                    title="My Measurements"
+                />
 
                 {/* Action Buttons */}
                 <div className="flex gap-2">
