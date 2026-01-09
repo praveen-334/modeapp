@@ -1,65 +1,142 @@
-import Image from "next/image";
+import Image from "next/image"
+import Link from "next/link"
+import { Search, MapPin, Plus } from "lucide-react"
+
+import { Header } from "@/components/layout/Header"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { FEATURED_MODELS, AGENCIES_BOUTIQUES, PHOTOGRAPHERS, CATEGORIES } from "@/lib/data"
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <main className="flex min-h-screen flex-col bg-background">
+      <Header />
+
+      <div className="flex-1 space-y-8 px-4 py-6">
+        {/* Hero / Search */}
+        <section className="space-y-4">
+          <div className="space-y-1">
+            <h2 className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+              Discover Fashion Talent
+            </h2>
+            <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+              Book models, agencies, <br /> boutiques & creatives.
+            </h1>
+            <p className="text-sm text-muted-foreground">
+              The fashion network for models, agencies, boutiques, and photographers.
+            </p>
+          </div>
+
+          <div className="relative">
+            <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+            <input
+              type="text"
+              placeholder="Search models, agencies, boutiques..."
+              className="flex h-10 w-full rounded-md border border-input bg-background px-9 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+          </div>
+
+          <div className="flex flex-wrap gap-2 text-sm text-muted-foreground">
+            {/* Tags/Categories pills */}
+            {CATEGORIES.map((cat) => (
+              <Badge key={cat.name} variant={cat.name === "Models" ? "default" : "secondary"} className="cursor-pointer">
+                {cat.name}
+              </Badge>
+            ))}
+          </div>
+        </section>
+
+        {/* Featured Models */}
+        <section className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="font-semibold text-lg">Featured models</h3>
+            <Link href="#" className="text-xs text-muted-foreground hover:text-foreground">See all</Link>
+          </div>
+
+          <div className="flex space-x-4 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4">
+            {FEATURED_MODELS.map((model) => (
+              <Link href={`/model/${model.id}`} key={model.id} className="w-[160px] flex-none space-y-3 block">
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-zinc-100">
+                  <Image
+                    src={model.image}
+                    alt={model.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <h4 className="font-medium text-sm leading-none">{model.name}</h4>
+                  <div className="flex items-center text-xs text-muted-foreground">
+                    <span>{model.height} • {model.location}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1 pt-1">
+                    {model.tags.map(tag => (
+                      <Badge key={tag} variant="black" className="text-[10px] h-5 px-1.5">{tag}</Badge>
+                    ))}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Agencies & Boutiques */}
+        <section className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="font-semibold text-lg">Agencies & boutiques</h3>
+            <Link href="#" className="text-xs text-muted-foreground hover:text-foreground">Explore all</Link>
+          </div>
+
+          <div className="flex space-x-4 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4">
+            {AGENCIES_BOUTIQUES.map((item) => (
+              <Link href={item.type.includes("Boutique") ? `/boutique/${item.id}` : `/agency/${item.id}`} key={item.id} className="w-[240px] flex-none space-y-3 block">
+                <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-zinc-100">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-medium text-sm">{item.name}</h4>
+                  <p className="text-xs text-muted-foreground">{item.type}</p>
+                  <p className="text-xs text-muted-foreground">{item.location}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Featured Photographers */}
+        <section className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="font-semibold text-lg">Featured photographers</h3>
+            <Link href="#" className="text-xs text-muted-foreground hover:text-foreground">View photographers</Link>
+          </div>
+
+          <div className="flex space-x-4 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4">
+            {PHOTOGRAPHERS.map((photog) => (
+              <Link href={`/photographer/${photog.id}`} key={photog.id} className="w-[200px] flex-none space-y-3 block">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-zinc-100">
+                  <Image
+                    src={photog.image}
+                    alt={photog.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-medium text-sm">{photog.name}</h4>
+                  <p className="text-xs text-muted-foreground">{photog.specialty}</p>
+                  <p className="text-xs text-muted-foreground">{photog.location}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </div>
+    </main>
+  )
 }
